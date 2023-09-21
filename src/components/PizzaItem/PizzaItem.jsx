@@ -12,7 +12,7 @@ export default function PizzaCard({ pizza }) {
   const handleAdd = () => {
     dispatch({
       type: "ADD_TO_CART",
-      payload: pizza.name
+      payload: pizza
     })
     dispatch({
       type: "ADD_TO_CART_TOTAL",
@@ -23,7 +23,7 @@ export default function PizzaCard({ pizza }) {
   const handleRemove = () => {
     dispatch({
       type: "REMOVE_FROM_CART",
-      payload: pizza.name
+      payload: pizza
     })
     dispatch({
       type: "REMOVE_FROM_CART_TOTAL",
