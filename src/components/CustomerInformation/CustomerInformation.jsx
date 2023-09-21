@@ -75,9 +75,7 @@ function customInformation() {
   return (
     <>
       <div>
-        <header className="App-header">
-          <h1 className="App-title">Prime Pizza</h1>
-        </header>
+      
         <form onSubmit={(event) => addOrder(event)}>
           <input
             onChange={handleNameChange}
