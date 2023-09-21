@@ -1,0 +1,13 @@
+.selectPizza {
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  border: 2px solid blue;
+}
+.pizzaCard{
+  max-width: 250px;
+  margin: 20px;
+}
+
+

@@ -35,7 +35,7 @@ function App() {
       </Route>
 
       <Route exact path="/SelectPizza">
-        {/* <SelectPizza /> */}
+        <SelectPizza />
       </Route>
 
       <Route exact path="/CustomerInformation">
