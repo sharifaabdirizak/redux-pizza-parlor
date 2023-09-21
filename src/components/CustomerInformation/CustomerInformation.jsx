@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 function customInformation() {
-  let [orderToADD, setOrderToAdd] = useState({
+  let [orderToAdd, setOrderToAdd] = useState({
     customerName: "",
     address: "",
     city: "",
