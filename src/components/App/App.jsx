@@ -1,35 +1,32 @@
 // App.js
 import "./App.css";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+import Home from "../Home/Home";
 
 function App() {
   return (
     <Router>
-      <div className="nav">
         <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/SelectPizza">Add Artist</Link>
-        </li>
-        <li>
-          <Link to="/CustomerInformation">All Artists</Link>
-        </li>
-        <li>
-          <Link to="/OrderCheckout">All Artists</Link>
-        </li>
-        <li>
-          {/* Remove this later */}
-          <Link to="/Admin">Admin</Link>
-        </li>
-      </div>
-      <Route exact path="/">
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/SelectPizza">SelectPizza</Link>
+          </li>
+          <li>
+            <Link to="/CustomerInformation">CustomerInformation</Link>
+          </li>
+          <li>
+            <Link to="/OrderCheckout">OrderCheckout</Link>
+          </li>
+          <li>
+            {/* Remove this later */}
+            <Link to="/Admin">Admin</Link>
+          </li>
+      <Route path="/">
         <Home />
+      </Route>
+      <Route exact path="/">
         <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Prime Pizza</h1>
-          </header>
-
           <img src="images/pizza_photo.png" />
           <p>Pizza is great.</p>
         </div>
