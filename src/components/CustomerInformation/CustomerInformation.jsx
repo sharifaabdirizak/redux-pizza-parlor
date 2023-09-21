@@ -40,7 +40,7 @@ const handleDelivery = (event) => {
 })};
 
 
-const setPickup = (event) => {
+const addOrder = (event) => {
     event.preventDefault()
     console.log('orderToAdd')
 
@@ -50,3 +50,35 @@ const setPickup = (event) => {
     }); history.push('/checkout')
 }
     
+return(
+<>
+<div>
+      <header className='App-header'>
+        <h1 className='App-title'>Prime Pizza</h1>
+      </header>
+      <form onSubmit={(event) => addOrder(event)}>
+        <input onChange={handleNameChange}
+            type='text'
+             placeholder='name'
+            vlaue={orderToAdd.customerName}/>
+         <input onChange={handleAddressChange}
+            type='text'
+             placeholder='address'
+            vlaue={orderToAdd.address}/>
+        <input onChange={handleCityChange}
+            type='text'
+             placeholder='city'
+            vlaue={orderToAdd.city}/>
+             <input onChange={handleZipcode}
+            type='text'
+             placeholder='zipcode'
+            vlaue={orderToAdd.zipcode}/>
+
+      </>
+
+      </form>
+
+      </div>
+</>
+
+)
