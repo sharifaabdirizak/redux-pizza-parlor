@@ -76,18 +76,7 @@ const handleTakeoutChange = (event) => {
     // TODO: Clear input fields
   };
 
-  // const getOrders = () =>
-  // axios
-  // .get("/orders")
-  // .then((response) => {
-  //   setOrders(response.data);
-  //   console.log("get customer information page");
-  // })
-  // .catch((err) => {
-  //   alert("error getting customer information page, err");
-  //   console.log(err);
-  // });
-  // };
+
 
   return (
     <>
