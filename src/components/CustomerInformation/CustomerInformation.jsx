@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import { Radio, RadioGroup } from "@mui/material";
+import FormControlLabel from "@mui/material";
 
 function customInformation() {
   let [orderToAdd, setOrderToAdd] = useState({
@@ -10,15 +11,13 @@ function customInformation() {
     city: "",
     type: "",
     time: "2:33pm", //TODO take in time
-    zipcode: "",
+    zip: "",
   });
   let total = useSelector((store) => store.cart);
 
-  const history = useHistory();
-  const dispatch = useDispatch();
-const handleTakeoutChange = (event) => {
-  setOrderToAdd({ ...orderToAdd, type: event.target.value });
-
+  const handleTakeoutChange = (event) => {
+    setOrderToAdd({ ...orderToAdd, type: event.target.value });
+  };
   const handleNameChange = (event) => {
     setOrderToAdd({ ...orderToAdd, customerName: event.target.value });
   };
@@ -31,11 +30,9 @@ const handleTakeoutChange = (event) => {
     setOrderToAdd({ ...orderToAdd, city: event.target.value });
   };
 
-  const handleZipcodeChange = (event) => {
-    setOrderToAdd({ ...orderToAdd, zipcode: event.target.value });
+  const handleZipChange = (event) => {
+    setOrderToAdd({ ...orderToAdd, zip: event.target.value });
   };
-
- 
 
   const addOrder = (event) => {
     event.preventDefault();
@@ -73,9 +70,7 @@ const handleTakeoutChange = (event) => {
         );
       });
     // TODO: Clear input fields
-  };
-
-
+  }; //end addOrder
 
   return (
     <>
@@ -88,45 +83,39 @@ const handleTakeoutChange = (event) => {
             onChange={handleNameChange}
             type="text"
             placeholder="name"
-            vlaue={orderToAdd.customerName}
+            value={orderToAdd.customerName}
           />
           <input
             onChange={handleAddressChange}
             type="text"
             placeholder="address"
-            vlaue={orderToAdd.address}
+            value={orderToAdd.address}
           />
           <input
             onChange={handleCityChange}
             type="text"
             placeholder="city"
-            vlaue={orderToAdd.city}
+            value={orderToAdd.city}
           />
           <input
-            onChange={ handleZipcodeChange}
+            onChange={handleZipChange}
             type="text"
-            placeholder="zipcode"
-            vlaue={orderToAdd.zipcode}
+            placeholder="Zip Code"
+            value={orderToAdd.zip}
           />
-          <Radio
-            checked={type === "takeout"}
-            onChange={handleTakeoutChange}
-            value={orderToAdd.type}
-            name="radio-buttons"
-            slotProps={{ input: { "aria-label": "A" } }}
-          />
-          <Radio
-            checked={type === "delivery"}
-            onChange={handleTakeoutChange}
-            value={orderToadd.type}
-            name="radio-buttons"
-            slotProps={{ input: { "aria-label": "B" } }}
-          />
+            <br/>
+            <label>Take Out</label>
+            <input onClick={handleTakeoutChange} type="radio" name="color" value={addOrder.type}/>
+            <br/>
+            <label>Delivery</label>
+            <input onClick={handleTakeoutChange} type="radio" name="color" value={addOrder.type}/>
+            <br/><br/>
+
           <button type="submit">Submit</button>
         </form>
       </div>
     </>
   );
-}}
+}
 
 export default customInformation;
