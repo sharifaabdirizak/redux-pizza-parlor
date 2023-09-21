@@ -33,7 +33,7 @@ export default function OrderCheckout() {
       <Container >
         <h2>Checkout</h2>
         <DeliveryInfo orders={orders} />
-      <CheckoutTable orders={orders} />
+      <CheckoutTable  />
       </Container>
     </>
   );

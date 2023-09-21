@@ -5,11 +5,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import ButtonLink from "../ButtonLink/ButtonLink";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@mui/material";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function CheckoutTable({ orders }) {
-  const handleCheckout = (event) => {
-
+export default function CheckoutTable() {
+  const cart = useSelector((store) => store.cart);
+  const dispatch=useDispatch();
+  const history = useHistory();
+  const handleCheckout = () => {
+    dispatch({ type: "EMPTY_CART" });
+    console.log("Empty cart")
+    history.push("/SelectPizza");
   };
 
   return (
@@ -23,23 +30,23 @@ export default function CheckoutTable({ orders }) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {orders.map((order) => (
+            {cart.map((cartItem) => (
               <TableRow
-                key={order.id}
+                key={cartItem.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {order.name}
+                  {cartItem.name}
                 </TableCell>
-                <TableCell align="right">{order.price}</TableCell>
+                <TableCell align="right">{cartItem.price}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <ButtonLink to="/SelectPizza" onClick={handleCheckout}>
+      <Button  onClick={handleCheckout}>
         Checkout
-      </ButtonLink>
+      </Button>
     </>
   );
 }

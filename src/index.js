@@ -25,6 +25,11 @@ const cart = (state = [], action) => {
   if (action.type === "REMOVE_FROM_CART") {
     return state.filter( (pizza) => pizza !=action.payload);
   }
+
+  if (action.type === "EMPTY_CART") {
+    return [];
+  }
+
   return state;
 };
 
@@ -35,6 +40,9 @@ const cartTotal = (state = 0, action) => {
   }
   if (action.type === "REMOVE_FROM_CART_TOTAL") {
     return state = state - action.payload;
+  }
+  if (action.type === "EMPTY_CART") {
+    return 0;
   }
   return state;
 };
