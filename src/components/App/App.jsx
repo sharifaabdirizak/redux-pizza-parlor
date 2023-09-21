@@ -1,4 +1,5 @@
 // App.js
+import SelectPizza from "../SelectPizza/SelectPizza";
 import "./App.css";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
@@ -10,7 +11,7 @@ function App() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/SelectPizza">Add Artist</Link>
+          <Link to="/SelectPizza">Select Pizza</Link>
         </li>
         <li>
           <Link to="/CustomerInformation">All Artists</Link>
@@ -23,7 +24,7 @@ function App() {
           <Link to="/Admin">Admin</Link>
         </li>
       </div>
-      <Route exact path="/">
+      <Route path="/">
         {/* <Home /> */}
         <div className="App">
           <header className="App-header">
@@ -36,13 +37,13 @@ function App() {
       </Route>
 
       <Route exact path="/SelectPizza">
-        {/* <SelectPizza /> */}
+        <SelectPizza />
       </Route>
 
       <Route exact path="/CustomerInformation">
         {/* <CustomerInformation /> */}
       </Route>
-      
+
       <Route exact path="/OrderCheckout">
         {/* <OrderCheckout /> */}
       </Route>
