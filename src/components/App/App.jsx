@@ -4,6 +4,7 @@ import "./App.css";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import Home from "../Home/Home";
 import CustomerInformation from "../CustomerInformation/CustomerInformation";
+import OrderCheckout from "../OrderCheckout/OrderCheckout.jsx";
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
       </Route>
 
       <Route exact path="/OrderCheckout">
-        {/* <OrderCheckout /> */}
+        <OrderCheckout />
       </Route>
       <Route exact path="/Admin">
         {/* <Admin /> */}
