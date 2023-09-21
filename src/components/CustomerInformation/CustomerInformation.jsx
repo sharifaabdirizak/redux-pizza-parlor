@@ -139,6 +139,6 @@ const handleTakeoutChange = (event) => {
       </div>
     </>
   );
-}
+}}
 
 export default customInformation;
