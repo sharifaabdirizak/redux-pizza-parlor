@@ -1,0 +1,84 @@
+import { useState } from "react"
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+function customInformation() {
+    const [customerName, setCustomerName] = useState('');
+    const [Address, setAddress] = useState('');
+    const [City, setCity] = useState('');
+    const [zipcode, setZipCode] = useState('')
+}
+
+const history = useHistory();
+const dispatch = useDispatch();
+
+const handleNameChange = (event) => {
+    setOrderToAdd({...orderToAdd,
+    customerName : event.target.value,
+})};
+
+
+const handleAddressChange = (event) => {
+    setOrderToAdd({...orderToAdd,
+    address : event.target.value,
+})};
+
+const handleCityChange = (event) => {
+    setOrderToAdd({...orderToAdd,
+    city : event.target.value,
+})};
+
+const handleZipcodeChange = (event) => {
+    setOrderToAdd({...orderToAdd,
+    zipcode : event.target.value,
+})};
+
+
+const handleDelivery = (event) => {
+    setOrderToAdd({...orderToAdd,
+    type : event.target.value,
+})};
+
+
+const addOrder = (event) => {
+    event.preventDefault()
+    console.log('orderToAdd')
+
+    dipatch ({
+        type: 'Set Customer',
+        payload: orderToAdd
+    }); history.push('/checkout')
+}
+    
+return(
+<>
+<div>
+      <header className='App-header'>
+        <h1 className='App-title'>Prime Pizza</h1>
+      </header>
+      <form onSubmit={(event) => addOrder(event)}>
+        <input onChange={handleNameChange}
+            type='text'
+             placeholder='name'
+            vlaue={orderToAdd.customerName}/>
+         <input onChange={handleAddressChange}
+            type='text'
+             placeholder='address'
+            vlaue={orderToAdd.address}/>
+        <input onChange={handleCityChange}
+            type='text'
+             placeholder='city'
+            vlaue={orderToAdd.city}/>
+             <input onChange={handleZipcode}
+            type='text'
+             placeholder='zipcode'
+            vlaue={orderToAdd.zipcode}/>
+
+      </>
+
+      </form>
+
+      </div>
+</>
+
+)
