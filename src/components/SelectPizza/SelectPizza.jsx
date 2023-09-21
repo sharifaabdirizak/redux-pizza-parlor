@@ -3,8 +3,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-export default function SelectPizza(){
-  const dispatch = useDispatch
+export default function SelectPizza() {
+  const dispatch = useDispatch;
 
   useEffect(() => {
     console.log("in useEffect");
@@ -28,11 +28,11 @@ export default function SelectPizza(){
         console.log("error on GET Pizza", error);
       });
   };
-  return(
-<Grid container spacing={2}>
-  <Grid item xs={6} md={8}>
-    <div>xs=6 md=8</div>
-  </Grid>
-</Grid>
-  )
+  return (
+    <Grid container spacing={2}>
+      <Grid item xs={6} md={8}>
+        <div>xs=6 md=8</div>
+      </Grid>
+    </Grid>
+  );
 }
