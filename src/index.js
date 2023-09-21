@@ -22,13 +22,25 @@ const cart = (state = [], action) => {
   if (action.type === "ADD_TO_CART") {
     return [...state, action.payload];
   }
-
-  if (action.type === "EMPTY_CART") {
-    return [];
+  if (action.type === "REMOVE_FROM_CART") {
+    return state.filter( (pizza) => pizza !=action.payload);
   }
-
   return state;
 };
+
+// running cartTotal
+const cartTotal = (state = 0, action) => {
+  if (action.type === "ADD_TO_CART_TOTAL") {
+    return state = Number(state) + Number(action.payload);
+  }
+  if (action.type === "REMOVE_FROM_CART_TOTAL") {
+    return state = state - action.payload;
+  }
+  return state;
+};
+
+
+
 
 //Orders
 const orders = (state = [], action) => {
@@ -55,6 +67,7 @@ const storeInstance = createStore(
     cart,
     orders,
     lineItems,
+    cartTotal
   }),
   applyMiddleware(logger)
 );

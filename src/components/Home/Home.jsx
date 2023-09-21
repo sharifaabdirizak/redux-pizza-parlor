@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 import ButtonLink from "../ButtonLink/ButtonLink";
 
 export default function Home() {
-  const cart = useSelector((store) => store.cart);
+  // const cart = useSelector((store) => store.cart);
+  const cartTotal = useSelector((store) => store.cartTotal)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -21,7 +22,7 @@ export default function Home() {
             <ButtonLink to="/OrderCheckout" color="inherit">CART</ButtonLink>
           </Stack>
           <Typography variant="h8" component="div">
-            TOTAL: ${cart.total}
+            TOTAL: ${cartTotal}
           </Typography>
         </Toolbar>
       </AppBar>

@@ -19,7 +19,6 @@ export default function CheckoutTable({ orders }) {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell align="right">Quantity</TableCell>
               <TableCell align="right">Cost</TableCell>
             </TableRow>
           </TableHead>
@@ -32,7 +31,6 @@ export default function CheckoutTable({ orders }) {
                 <TableCell component="th" scope="row">
                   {order.name}
                 </TableCell>
-                <TableCell align="right">{order.quantity}</TableCell>
                 <TableCell align="right">{order.price}</TableCell>
               </TableRow>
             ))}

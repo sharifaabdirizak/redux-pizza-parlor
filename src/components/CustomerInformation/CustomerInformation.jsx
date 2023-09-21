@@ -53,7 +53,7 @@ const handleTakeoutChange = (event) => {
     };
 
     axios
-      .post(`/order`, finalOrderToAdd)
+      .post(`/api/order`, finalOrderToAdd)
       .then((response) => {
         // Clear the form inputs
         setOrderToAdd({
@@ -65,7 +65,6 @@ const handleTakeoutChange = (event) => {
           total: "",
           time: "",
         });
-        getOrders();
       })
       .catch((error) => {
         console.log(error);
