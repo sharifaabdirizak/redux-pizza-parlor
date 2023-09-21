@@ -38,7 +38,7 @@ function customInformation() {
    //(in the return do the get in the .then)
    
    axios
-   .post(`/order`, orderToAdd)
+   .post(`/order`, orderToADD)
    .then((response) => {
      // Clear the form inputs
      setOrderToAdd({
@@ -56,13 +56,22 @@ function customInformation() {
  // TODO: Clear input fields
 };
    
-const getOrders = () =>
-axios
-.get
+// const getOrders = () =>
+// axios
+// .get("/orders")
+// .then((response) => {
+//   setOrders(response.data);
+//   console.log("get customer information page");
+// })
+// .catch((err) => {
+//   alert("error getting customer information page, err");
+//   console.log(err);
+// });
+// };
 
 
 
-  };
+  
 
   return (
     <>
@@ -96,9 +105,10 @@ axios
             vlaue={orderToAdd.zipcode}
           />
         </form>
+        <button type="submit">Submit</button>
       </div>
     </>
   );
-}
+  }
 
 export default customInformation;
