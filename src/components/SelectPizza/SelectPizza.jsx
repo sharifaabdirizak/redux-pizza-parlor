@@ -1,10 +1,13 @@
-import { Grid } from "@mui/material";
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"
+import './selectPizza.css'
+import PizzaCard from "../PizzaItem/PizzaItem";
 
 export default function SelectPizza() {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
+  const pizzaList = useSelector((store) => store.pizzaList);
+  
 
   useEffect(() => {
     console.log("in useEffect");
@@ -12,6 +15,7 @@ export default function SelectPizza() {
   }, []);
 
   const getPizzas = () => {
+    console.log("getting pizza");
     axios({
       method: "GET",
       url: "/api/pizza",
@@ -23,16 +27,19 @@ export default function SelectPizza() {
           type: "GET_PIZZAS",
           payload: response.data,
         });
+        // console.log(response.data,"SMOKE")
       })
       .catch((error) => {
         console.log("error on GET Pizza", error);
       });
   };
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={6} md={8}>
-        <div>xs=6 md=8</div>
-      </Grid>
-    </Grid>
+    <div className="selectPizza">
+    {pizzaList.map((pizza) => {return(<PizzaCard key={pizza.id} pizza={pizza} />)
+      })}
+    </div>
   );
 }
+
+
+//card
