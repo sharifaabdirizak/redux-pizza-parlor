@@ -5,25 +5,25 @@ import { Radio, RadioGroup } from "@mui/material";
 import FormControlLabel from "@mui/material";
 
 function customInformation() {
+  const total = useSelector(store => store.cartTotal)
   let [orderToAdd, setOrderToAdd] = useState({
-    customerName: "",
-    address: "",
+    customer_name: "",
+    street_address: "",
     city: "",
     type: "",
     time: "2:33pm", //TODO take in time
     zip: "",
   });
-  let total = useSelector((store) => store.cart);
 
   const handleTakeoutChange = (event) => {
     setOrderToAdd({ ...orderToAdd, type: event.target.value });
   };
   const handleNameChange = (event) => {
-    setOrderToAdd({ ...orderToAdd, customerName: event.target.value });
+    setOrderToAdd({ ...orderToAdd, customer_name: event.target.value });
   };
 
   const handleAddressChange = (event) => {
-    setOrderToAdd({ ...orderToAdd, address: event.target.value });
+    setOrderToAdd({ ...orderToAdd, street_address: event.target.value });
   };
 
   const handleCityChange = (event) => {
@@ -36,19 +36,15 @@ function customInformation() {
 
   const addOrder = (event) => {
     event.preventDefault();
-    console.log("orderToAdd");
+    // console.log("orderToAdd");
 
-    // axios post
-
-    //(in the return do the get in the .then)
 
     const finalOrderToAdd = {
       ...orderToAdd,
-      type: type,
-      total: total,
-      time: time,
+      total: total
     };
-
+    console.log(finalOrderToAdd,"FINAL ORDER")
+    
     axios
       .post(`/api/order`, finalOrderToAdd)
       .then((response) => {
@@ -81,13 +77,13 @@ function customInformation() {
             onChange={handleNameChange}
             type="text"
             placeholder="name"
-            value={orderToAdd.customerName}
+            value={orderToAdd.customer_name}
           />
           <input
             onChange={handleAddressChange}
             type="text"
             placeholder="address"
-            value={orderToAdd.address}
+            value={orderToAdd.street_address}
           />
           <input
             onChange={handleCityChange}
@@ -103,10 +99,10 @@ function customInformation() {
           />
             <br/>
             <label>Take Out</label>
-            <input onClick={handleTakeoutChange} type="radio" name="color" value={addOrder.type}/>
+            <input onChange={handleTakeoutChange} type="radio" name="color" value={'takeout'}/>
             <br/>
             <label>Delivery</label>
-            <input onClick={handleTakeoutChange} type="radio" name="color" value={addOrder.type}/>
+            <input onChange={handleTakeoutChange} type="radio" name="color" value={'delivery'}/>
             <br/><br/>
 
           <button type="submit">Submit</button>
