@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 function customInformation() {
   let [orderToADD, setOrderToAdd] = useState({ customerName: "", address: "", city: "", zipcode: "" });
+let [type, total, time] = useSelector(store=>store.pizzaDetails)
+
+
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -37,15 +40,27 @@ function customInformation() {
 
    //(in the return do the get in the .then)
    
+   const finalOrderToAdd = {...orderToAdd, 
+    type: type,
+   total: total,
+   time: time
+   }
+   
+
    axios
-   .post(`/order`, orderToADD)
+   .post(`/order`, finalOrderToAdd)
    .then((response) => {
      // Clear the form inputs
      setOrderToAdd({
-       customerName: "",
-       address: "",
+       customer_name: "",
+       street_address: "",
        city: "",
-       zipcode: "",
+       zip: "",
+       type: "",
+       total: "",
+       time: ""
+       
+       
      });
      getOrders();
    })
