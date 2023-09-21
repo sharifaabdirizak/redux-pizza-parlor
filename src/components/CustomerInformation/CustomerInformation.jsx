@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 function customInformation() {
   let [orderToADD, setOrderToAdd] = useState({ customerName: "", address: "", city: "", zipcode: "" });
@@ -36,9 +37,31 @@ function customInformation() {
 
    //(in the return do the get in the .then)
    
+   axios
+   .post(`/order`, orderToAdd)
+   .then((response) => {
+     // Clear the form inputs
+     setOrderToAdd({
+       customerName: "",
+       address: "",
+       city: "",
+       zipcode: "",
+     });
+     getOrders();
+   })
+   .catch((error) => {
+     console.log(error);
+     alert(`Sorry, couldn't add order infomration at this time. Try again later`);
+   });
+ // TODO: Clear input fields
+};
+   
+const getOrders = () =>
+axios
+.get
 
-   
-   
+
+
   };
 
   return (
