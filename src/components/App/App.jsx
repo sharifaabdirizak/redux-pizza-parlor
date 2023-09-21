@@ -24,7 +24,7 @@ function App() {
         </li>
       </div>
       <Route exact path="/">
-        <Home />
+        {/* <Home /> */}
         <div className="App">
           <header className="App-header">
             <h1 className="App-title">Prime Pizza</h1>
@@ -36,17 +36,18 @@ function App() {
       </Route>
 
       <Route exact path="/SelectPizza">
-        <SelectPizza />
+        {/* <SelectPizza /> */}
       </Route>
 
       <Route exact path="/CustomerInformation">
-        <CustomerInformation />
+        {/* <CustomerInformation /> */}
       </Route>
+      
       <Route exact path="/OrderCheckout">
-        <OrderCheckout />
+        {/* <OrderCheckout /> */}
       </Route>
       <Route exact path="/Admin">
-        <Admin />
+        {/* <Admin /> */}
       </Route>
     </Router>
   );
