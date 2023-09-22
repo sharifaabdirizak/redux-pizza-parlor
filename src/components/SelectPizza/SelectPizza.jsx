@@ -1,18 +1,24 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import './selectPizza.css'
+import { useDispatch, useSelector } from "react-redux";
+import "./selectPizza.css";
 import PizzaCard from "../PizzaItem/PizzaItem";
+import { Button } from "@mui/material";
+import { useHistory } from "react-router-dom/";
 
 export default function SelectPizza() {
   const dispatch = useDispatch();
   const pizzaList = useSelector((store) => store.pizzaList);
-  
+  const history = useHistory();
 
   useEffect(() => {
     console.log("in useEffect");
     getPizzas();
   }, []);
+
+  const handleClick = () => {
+    history.push("/CustomerInformation");
+  };
 
   const getPizzas = () => {
     console.log("getting pizza");
@@ -34,12 +40,17 @@ export default function SelectPizza() {
       });
   };
   return (
-    <div className="selectPizza">
-    {pizzaList.map((pizza) => {return(<PizzaCard key={pizza.id} pizza={pizza} />)
-      })}
+    <div className="selectPizzaContainer">
+      <div className="selectPizza">
+        {pizzaList.map((pizza) => {
+          return <PizzaCard key={pizza.id} pizza={pizza} />;
+        })}
+      </div>
+      <div className="selectPizzaNext">
+        <Button variant="contained" onClick={handleClick}>Next</Button>
+      </div>
     </div>
   );
 }
-
 
 //card

@@ -2,10 +2,12 @@
 import SelectPizza from "../SelectPizza/SelectPizza";
 import "./App.css";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+import Header from "../Header/Header";
 import Home from "../Home/Home";
 import CustomerInformation from "../CustomerInformation/CustomerInformation";
 import OrderCheckout from "../OrderCheckout/OrderCheckout.jsx";
-
+import Admin from "../Admin/Admin";
+import { Button } from "@mui/base";
 function App() {
   return (
     <Router>
@@ -26,13 +28,10 @@ function App() {
         <Link to="/Admin">Admin</Link>
       </li>
       <Route path="/">
-        <Home />
+        <Header />
       </Route>
       <Route exact path="/">
-        <div className="App">
-          <img src="images/pizza_photo.png" />
-          <p>Pizza is great.</p>
-        </div>
+        <Home/>
       </Route>
 
       <Route exact path="/SelectPizza">
@@ -47,7 +46,7 @@ function App() {
         <OrderCheckout />
       </Route>
       <Route exact path="/Admin">
-        {/* <Admin /> */}
+        <Admin />
       </Route>
     </Router>
   );

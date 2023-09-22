@@ -1,31 +1,38 @@
-import { Button, IconButton, Stack, Toolbar } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+import { Link, Button } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { useSelector } from "react-redux";
+import Box from "@mui/material/Box";
 import ButtonLink from "../ButtonLink/ButtonLink";
 
 export default function Home() {
-  // const cart = useSelector((store) => store.cart);
-  const cartTotal = useSelector((store) => store.cartTotal)
-
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="80vh"
+    >
+      <Card sx={{ maxWidth: 500, maxHeight: 500 }}>
+        <CardMedia
+          sx={{ height: 140 }}
+          image="images/pizza_photo.png"
+          title="pizza home"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
             Prime Pizza
           </Typography>
-          <Stack direction="row" spacing={2}>
-          <ButtonLink to="/" color="inherit">Home</ButtonLink>
-            <ButtonLink to="/SelectPizza" color="inherit">Menu</ButtonLink>
-            <ButtonLink to="/OrderCheckout" color="inherit">CART</ButtonLink>
-          </Stack>
-          <Typography variant="h8" component="div">
-            TOTAL: ${cartTotal}
+          <Typography variant="body2" color="text.secondary">
+            Prime Pizza is the best pizza around! Enjoy our great dishes!
           </Typography>
-        </Toolbar>
-      </AppBar>
+        </CardContent>
+        <CardActions>
+            <ButtonLink to="/selectPizza" variant="contained"> View Pizzas </ButtonLink>
+        </CardActions>
+      </Card>
     </Box>
   );
 }

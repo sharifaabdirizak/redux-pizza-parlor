@@ -17,6 +17,15 @@ const pizzaList = (state = [], action) => {
   return state;
 };
 
+//Order Menu
+const orderList = (state = [], action) => {
+  if (action.type === "GET_ORDER_LIST") {
+    return action.payload;
+  }
+
+  return state;
+};
+
 // Items in the cart
 const cart = (state = [], action) => {
   if (action.type === "ADD_TO_CART") {
@@ -87,7 +96,8 @@ const storeInstance = createStore(
     orders,
     lineItems,
     cartTotal,
-    userInfo
+    userInfo,
+    orderList
   }),
   applyMiddleware(logger)
 );

@@ -1,13 +1,25 @@
+.selectPizzaContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
 .selectPizza {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
+  justify-content: center;
 }
-.pizzaCard{
+
+.selectPizzaNext {
+  /* border: 2px solid red; */
+  width: 50px;
+  margin: 20px 20vw 0 0;
+  justify-content: center;
+}
+
+.pizzaCard {
   max-width: 250px;
   margin: 20px;
 }
-
-
