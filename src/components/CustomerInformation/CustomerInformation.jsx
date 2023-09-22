@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Radio, RadioGroup } from "@mui/material";
 import FormControlLabel from "@mui/material";
 
 function customInformation() {
+  const dispatch = useDispatch();
   const total = useSelector(store => store.cartTotal)
   let [orderToAdd, setOrderToAdd] = useState({
     customer_name: "",
@@ -37,36 +38,33 @@ function customInformation() {
   const addOrder = (event) => {
     event.preventDefault();
     // console.log("orderToAdd");
-
-
-    const finalOrderToAdd = {
-      ...orderToAdd,
-      total: total
-    };
-    console.log(finalOrderToAdd,"FINAL ORDER")
-    
-    axios
-      .post(`/api/order`, finalOrderToAdd)
-      .then((response) => {
-        // Clear the form inputs
-        setOrderToAdd({
-          customer_name: "",
-          street_address: "",
-          city: "",
-          zip: "",
-          type: "",
-          total: "",
-          time: "",
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-        alert(
-          `Sorry, couldn't add order infomration at this time. Try again later`
-        );
-      });
-    // TODO: Clear input fields
+    dispatch({
+      type: "COLLECT_USER_INFO",
+      payload: orderToAdd})
+    setOrderToAdd({
+      customer_name: "",
+      street_address: "",
+      city: "",
+      zip: "",
+      type: "",
+      total: "",
+      time: "",
+    });
   }; //end addOrder
+
+    
+    // axios
+    //   .post(`/api/order`, finalOrderToAdd)
+    //   .then((response) => {
+    //     // Clear the form inputs
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     alert(
+    //       `Sorry, couldn't add order infomration at this time. Try again later`
+    //     );
+    //   });
+
 
   return (
     <>

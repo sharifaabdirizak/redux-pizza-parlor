@@ -47,8 +47,14 @@ const cartTotal = (state = 0, action) => {
   return state;
 };
 
+//user info
+const userInfo = (state = [], action) => {
+//   if (action.type === "GET_ORDERS") { // take in addOrder object as redux values
+//     return action.payload;
+//   }
 
-
+//   return state;
+// };
 
 //Orders
 const orders = (state = [], action) => {
