@@ -6,7 +6,7 @@ import FormControlLabel from "@mui/material";
 
 function customInformation() {
   const dispatch = useDispatch();
-  const total = useSelector(store => store.cartTotal)
+  // const total = useSelector(store => store.cartTotal)
   let [orderToAdd, setOrderToAdd] = useState({
     customer_name: "",
     street_address: "",
@@ -46,25 +46,10 @@ function customInformation() {
       street_address: "",
       city: "",
       zip: "",
-      type: "",
-      total: "",
-      time: "",
+      // time: "",
+      type: ""
     });
   }; //end addOrder
-
-    
-    // axios
-    //   .post(`/api/order`, finalOrderToAdd)
-    //   .then((response) => {
-    //     // Clear the form inputs
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     alert(
-    //       `Sorry, couldn't add order infomration at this time. Try again later`
-    //     );
-    //   });
-
 
   return (
     <>

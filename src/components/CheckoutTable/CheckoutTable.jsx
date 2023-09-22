@@ -8,15 +8,41 @@ import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import axios from "axios";
 
 export default function CheckoutTable() {
-  const cart = useSelector((store) => store.cart);
+  const pizzas = useSelector((store) => store.cart);
   const dispatch=useDispatch();
   const history = useHistory();
+  const cartTotal = useSelector(store=> store.cartTotal)
+  const userInfo = useSelector(store => store.userInfo)
+
+
   const handleCheckout = () => {
-    dispatch({ type: "EMPTY_CART" });
-    console.log("Empty cart")
-    history.push("/SelectPizza");
+  let finalOrderToAdd = {
+    ...userInfo,
+    total: cartTotal,
+    pizzas: pizzas
+
+  }
+  // console.log("SMOKEY THE BEAR",finalOrderToAdd)
+  axios
+      .post(`/api/order`, finalOrderToAdd)
+      .then((response) => {
+
+        dispatch({ type: "EMPTY_CART" });
+        console.log("Empty cart")
+        history.push("/SelectPizza");
+      
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(
+          `Sorry, couldn't add order infomration at this time. Try again later`
+        );
+      });
+
+
   };
 
   return (
@@ -30,7 +56,7 @@ export default function CheckoutTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {cart.map((cartItem) => (
+            {pizzas.map((cartItem) => (
               <TableRow
                 key={cartItem.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

@@ -20,7 +20,12 @@ const pizzaList = (state = [], action) => {
 // Items in the cart
 const cart = (state = [], action) => {
   if (action.type === "ADD_TO_CART") {
-    return [...state, action.payload];
+    let newState = action.payload;
+    newState = {
+      ...newState,
+      quantity: 1
+    }
+    return [...state, newState];
   }
   if (action.type === "REMOVE_FROM_CART") {
     return state.filter( (pizza) => pizza !=action.payload);
@@ -49,12 +54,12 @@ const cartTotal = (state = 0, action) => {
 
 //user info
 const userInfo = (state = [], action) => {
-//   if (action.type === "GET_ORDERS") { // take in addOrder object as redux values
-//     return action.payload;
-//   }
+  if (action.type === "COLLECT_USER_INFO") { // take in addOrder object as redux values
+    return action.payload;
+  }
 
-//   return state;
-// };
+  return state;
+};
 
 //Orders
 const orders = (state = [], action) => {
@@ -81,7 +86,8 @@ const storeInstance = createStore(
     cart,
     orders,
     lineItems,
-    cartTotal
+    cartTotal,
+    userInfo
   }),
   applyMiddleware(logger)
 );
