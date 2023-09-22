@@ -7,16 +7,20 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import { Card, CardContent, MenuItem, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import "./CustomerInformation.css";
+
+//TESTING MATERIAL UI
+import { styled } from "@mui/system";
+import { Badge, badgeClasses } from "@mui/base/Badge";
 
 function customInformation() {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const total = useSelector(store => store.cartTotal)
   let [orderToAdd, setOrderToAdd] = useState({
     customer_name: "",
     street_address: "",
@@ -63,6 +67,23 @@ function customInformation() {
     history.push("/OrderCheckout");
   }; //end addOrder
 
+  function BadgeContent() {
+    return (
+      <Box
+        component="span"
+        sx={{
+          width: 40,
+          height: 40,
+          borderRadius: "12px",
+          background: (theme) =>
+            theme.palette.mode === "dark" ? grey[400] : grey[300],
+          display: "inline-block",
+          verticalAlign: "middle",
+        }}
+      />
+    );
+  }
+
   return (
     <>
       <Box
@@ -102,25 +123,9 @@ function customInformation() {
                   placeholder="Zip Code"
                   value={orderToAdd.zip}
                 />
-                {/* <br />
-                <label>Take Out</label>
-                <input
-                  onChange={handleTakeoutChange}
-                  type="radio"
-                  name="color"
-                  value={"takeout"}
-                />
-                <br />
-                <label>Delivery</label>
-                <input
-                  onChange={handleTakeoutChange}
-                  type="radio"
-                  name="color"
-                  value={"delivery"}
-                />
-                <br />
-                <br /> */}
+
                 <RadioGroup
+                  className="radio-container"
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
@@ -132,6 +137,7 @@ function customInformation() {
                     onChange={handleTakeoutChange}
                   />
                   <FormControlLabel
+                    className="customerInformation"
                     value="Delivery"
                     control={<Radio />}
                     label="Delivery"
@@ -140,10 +146,9 @@ function customInformation() {
                 </RadioGroup>
                 <Button
                   type="submit"
-                  variant="text"
+                  variant="contained"
                   size="large"
                   disableElevation
-                  color="success"
                 >
                   Next
                 </Button>

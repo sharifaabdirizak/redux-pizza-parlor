@@ -12,7 +12,7 @@ import Admin from "../Admin/Admin";
 function App() {
   return (
     <Router>
-      <li>
+      {/* <li>
         <Link to="/">Home</Link>
       </li>
       <li>
@@ -25,9 +25,8 @@ function App() {
         <Link to="/OrderCheckout">OrderCheckout</Link>
       </li>
       <li>
-        {/* Remove this later */}
         <Link to="/Admin">Admin</Link>
-      </li>
+      </li> */}
       <Route path="/">
         <Header />
       </Route>

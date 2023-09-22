@@ -79,6 +79,9 @@ const orders = (state = [], action) => {
   return state;
 };
 
+
+
+
 //Line Items
 const lineItems = (state = [], action) => {
   if (action.type === "GET_LINE_ITEMS") {
@@ -97,7 +100,8 @@ const storeInstance = createStore(
     lineItems,
     cartTotal,
     userInfo,
-    orderList
+    orderList,
+    // mostRecentOrder
   }),
   applyMiddleware(logger)
 );

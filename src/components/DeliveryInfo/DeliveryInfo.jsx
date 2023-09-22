@@ -1,9 +1,11 @@
 import { Container, Grid } from "@mui/material";
+import { useSelector } from "react-redux";
 
 export default function DeliveryInfo({ orders }) {
+  const order = useSelector(store =>store.orders)
+  // console.log("SMOKE", order)
   return (
     <Grid container>
-     {orders.map((order) => (
         <div key={order.id}>
           <p>{order.customer_name}</p>
           <p>{order.street_address}</p>
@@ -12,7 +14,6 @@ export default function DeliveryInfo({ orders }) {
           </p>
           <p>{order.type}</p>
         </div>
-      ))}
-  </Grid>
+    </Grid>
   );
 }

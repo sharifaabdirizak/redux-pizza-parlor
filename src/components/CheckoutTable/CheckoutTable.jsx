@@ -10,8 +10,6 @@ import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 
-import './CheckoutTable.css'
-
 export default function CheckoutTable() {
   const pizzas = useSelector((store) => store.cart);
   const dispatch=useDispatch();
@@ -72,7 +70,7 @@ export default function CheckoutTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="contained" id="CheckoutButton" onClick={handleCheckout}>
+      <Button variant="contained" onClick={handleCheckout}>
         Checkout
       </Button>
     </>

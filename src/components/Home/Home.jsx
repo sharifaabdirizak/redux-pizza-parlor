@@ -30,7 +30,10 @@ export default function Home() {
           </Typography>
         </CardContent>
         <CardActions>
-            <ButtonLink to="/selectPizza" variant="contained"> View Pizzas </ButtonLink>
+          <ButtonLink to="/selectPizza" variant="contained">
+            {" "}
+            View Pizzas{" "}
+          </ButtonLink>
         </CardActions>
       </Card>
     </Box>
